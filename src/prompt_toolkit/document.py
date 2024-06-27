@@ -23,7 +23,9 @@ branch_coverage_next = {
 
 branch_coverage_prev = {
     "find_prev_1": False,
-    "find_prev_2": False
+    "find_prev_2": False,
+    "find_prev_else_1": False,
+    "find_prev_else_2": False,
 }
 
 branch_coverage_translate = {
@@ -705,7 +707,7 @@ class Document:
                 branch_coverage_next["find_next_2"] = True
                 break
             else:
-                branch_coverage_next["find_next_else_2"] = True  # Invisible branch flag for count not being 0
+                branch_coverage_next["find_next_else_2"] = True  
 
         return result
 
@@ -723,10 +725,14 @@ class Document:
                 branch_coverage_prev["find_prev_1"] = True
                 result = -1 - index
                 count -= 1
+            else:
+                branch_coverage_prev["find_prev_else_1"] = True
 
             if count == 0:
                 branch_coverage_prev["find_prev_2"] = True
                 break
+            else:
+                branch_coverage_prev["find_prev_else_2"] = True
 
         return result
     

@@ -944,9 +944,11 @@ class DynamicProcessor(Processor):
 
 
 merge_processors_coverage = {
-    "merge_processors_1": False,  # Branch for empty list of processors
-    "merge_processors_2": False,  # Branch for a single processor
-    "merge_processors_3": False   # Branch for multiple processors
+    "merge_processors_1": False,  
+    "merge_processors_2": False, 
+    "merge_processors_3": False,  
+    "merge_processors_else_1": False,
+    "merge_processors_else_2": False
 }
 
 def merge_processors(processors: list[Processor]) -> Processor:
@@ -956,10 +958,14 @@ def merge_processors(processors: list[Processor]) -> Processor:
     if len(processors) == 0:
         merge_processors_coverage["merge_processors_1"] = True
         return DummyProcessor()
+    else:
+        merge_processors_coverage["merge_processors_else_1"] = True
 
     if len(processors) == 1:
         merge_processors_coverage["merge_processors_2"] = True
         return processors[0]  # Nothing to merge.
+    else:
+        merge_processors_coverage["merge_processors_else_2"] = True
 
     merge_processors_coverage["merge_processors_3"] = True
     return _MergedProcessor(processors)

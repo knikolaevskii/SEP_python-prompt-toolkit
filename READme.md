@@ -126,7 +126,7 @@ Link: [https://github.com/knikolaevskii/SEP_python-prompt-toolkit/commit/6fadf7d
 
 Screenshot of the **old** coverage results:
 
-Aspose.Words.da29ccc9-e68a-4423-a983-a0d39818e8d2.011.jpeg
+![Alt Text](docs/images/Aspose.Words.da29ccc9-e68a-4423-a983-a0d39818e8d2.011.jpeg)
 
 Screenshot of the **new** coverage results:
 

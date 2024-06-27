@@ -189,7 +189,11 @@ to_dimension_coverage = {
     "to_dimension_2": False, 
     "to_dimension_3": False,  
     "to_dimension_4": False,  
-    "to_dimension_5": False   
+    "to_dimension_5": False,
+    "to_dimension_else_1": False,
+    "to_dimension_else_2": False,
+    "to_dimension_else_3": False,
+    "to_dimension_else_4": False
 }
 
 def to_dimension(value: AnyDimension) -> Dimension:
@@ -200,18 +204,29 @@ def to_dimension(value: AnyDimension) -> Dimension:
         to_dimension_coverage["to_dimension_1"] = True
         print("Branch 1 was hit")
         return Dimension()
+    else:
+        to_dimension_coverage["to_dimension_else_1"] = True
+
     if isinstance(value, int):
         to_dimension_coverage["to_dimension_2"] = True
         print("Branch 2 was hit")
         return Dimension.exact(value)
+    else:
+        to_dimension_coverage["to_dimension_else_2"] = True
+
     if isinstance(value, Dimension):
         to_dimension_coverage["to_dimension_3"] = True
         print("Branch 3 was hit")
         return value
+    else:
+        to_dimension_coverage["to_dimension_else_3"] = True
+
     if callable(value):
         to_dimension_coverage["to_dimension_4"] = True
         print("Branch 4 was hit")
         return to_dimension(value())
+    else:
+        to_dimension_coverage["to_dimension_else_4"] = True
 
     to_dimension_coverage["to_dimension_5"] = True
     print("Branch 5 was hit")
